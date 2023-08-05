@@ -21,6 +21,10 @@ header {
     padding: 20px 40px;
     background: var(--white);
     box-shadow: 0 5px 15px rgba(0,0,0, 0.2);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .logo {
@@ -55,4 +59,39 @@ header {
     text-decoration: underline;
     text-decoration-color: var(--green);
     text-decoration-thickness: 20%;
+}
+
+/* Overview Page */
+
+#overview div {
+    position: relative;
+    overflow: hidden;
+    height: 30vh;
+    margin-bottom: 5vh;
+}
+
+#overview:last-child {
+    margin-bottom: 0;
+}
+
+#overview div img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+}
+
+#overview div p {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 32px;
+    font-weight: 700;
+    border: 5px solid var(--green);
+    color: var(--green);
+    padding: 10px;
+}
+
+#overview div img:hover {
+    transform: scale(1.3);
 }
