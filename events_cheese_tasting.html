@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+</head>
+
+<body>
+    <header>
+        <img src="img/logo.jpg" alt="logo" class="logo">
+
+        <div>
+            <ul id ="navbar">
+                <li><a href="index.html">Übersicht</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+                <li><a class="active" href="events.html">Erlebnisse</a></li>
+                <li><a href="school.html">Ski- und Snowboardschule</a></li>
+                <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="presentation">
+        <img src="img/cheese.jpg">
+        <div class="information">
+            <h1>Käsedegustation</h1>
+            <h3>CHF 30</h3>
+            <br>
+            <div class="description">
+                <h4>Beschreibung</h4>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking">
+        <h2>Verfügbare Termine</h2>
+        <table>
+            <tr id="row1">
+                <td>
+                    <button class="events-date-button" data-target-id="row1" onclick="toggle(event)">26.09.2023</button></td>
+                <td>
+                    <div class="events-quantity">
+                        <input id="input1" type="number" min="0" max="30" value="1">
+                        <div class="input-buttons-container">
+                            <button class="number-input-button button-plus" data-target-id="input1" onclick="increase(event)">+</button>
+                            <button class="number-input-button button-minus" data-target-id="input1" onclick="decrease(event)">-</button>
+                        </div>
+                    </div>
+                </td>
+                <td><button id="buy-button1" class="events-buy-button">BUCHEN</button></td>
+            </tr>
+            <tr id="row2">
+                <td>
+                    <button class="events-date-button" data-target-id="row2" onclick="toggle(event)">14.10.2023</button></td>
+                <td>
+                    <div class="events-quantity">
+                        <input id="input2" type="number" min="0" max="30" value="1">
+                        <div class="input-buttons-container">
+                            <button class="number-input-button button-plus" data-target-id="input2" onclick="increase(event)">+</button>
+                            <button class="number-input-button button-minus" data-target-id="input2" onclick="decrease(event)">-</button>
+                        </div>
+                    </div>
+                </td>
+                <td><button class="events-buy-button">BUCHEN</button></td>
+            </tr>
+            <tr id="row3">
+                <td>
+                    <button class="events-date-button" data-target-id="row3" onclick="toggle(event)">28.10.2023</button></td>
+                <td>
+                    <div class="events-quantity">
+                        <input id="input3" type="number" min="0" max="30" value="1">
+                        <div class="input-buttons-container">
+                            <button class="number-input-button button-plus" data-target-id="input3" onclick="increase(event)">+</button>
+                            <button class="number-input-button button-minus" data-target-id="input3" onclick="decrease(event)">-</button>
+                        </div>
+                    </div>
+                </td>
+                <td><button class="events-buy-button">BUCHEN</button></td>
+            </tr>
+            <tr id="row4">
+                <td>
+                    <button class="events-date-button" data-target-id="row4" onclick="toggle(event)">14.11.2023</button></td>
+                <td>
+                    <div class="events-quantity">
+                        <input id="input4" type="number" min="0" max="30" value="1">
+                        <div class="input-buttons-container">
+                            <button class="number-input-button button-plus" data-target-id="input4" onclick="increase(event)">+</button>
+                            <button class="number-input-button button-minus" data-target-id="input4" onclick="decrease(event)">-</button>
+                        </div>
+                    </div>
+                </td>
+                <td><button class="events-buy-button">BUCHEN</button></td>
+            </tr>
+            <tr id="row5">
+                <td>
+                    <button class="events-date-button" data-target-id="row5" onclick="toggle(event)">26.04.2024</button></td>
+                <td>
+                    <div class="events-quantity">
+                        <input id="input5" type="number" min="0" max="30" value="1">
+                        <div class="input-buttons-container">
+                            <button class="number-input-button button-plus" data-target-id="input5" onclick="increase(event)">+</button>
+                            <button class="number-input-button button-minus" data-target-id="input5" onclick="decrease(event)">-</button>
+                        </div>
+                    </div>
+                </td>
+                <td><button class="events-buy-button">BUCHEN</button></td>
+            </tr>
+        </table>
+    </section>
+
+    <footer>
+        <div>
+            <h4>Bergbahnen Hackenberg</h4>
+            <p>Bergbahnstrasse 1<br>9876 Hackenberg<br>+41 98 765 43 21<br>info@hackenbergbahnen.ch</p>
+        </div>
+        <div>
+            <h4 id="follow">Follow us</h4>
+            <div class="icons">
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+            </div>
+        </div>
+        <div class="logo-container">
+            <img src="img/logo.jpg" alt="logo" class="logo">
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>

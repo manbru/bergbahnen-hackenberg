@@ -12,13 +12,39 @@
     --black: #000;
 }
 
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--green);
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600px;
+    color: var(--black);
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.5;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.5;
+}
+
 /* Header */
 
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
+    padding: 20px 40px 20px 25px;
     background: var(--white);
     box-shadow: 0 5px 15px rgba(0,0,0, 0.2);
     z-index: 999;
@@ -68,7 +94,7 @@ footer {
     align-items:flex-start;
     justify-content: space-between;
     background: var(--white);
-    box-shadow: 0 5px 15px rgba(0,0,0, 0.7);
+    box-shadow: 0 -5px 15px rgba(0,0,0, 0.2);
     z-index: 999;
     position: relative;
 }
@@ -134,4 +160,166 @@ footer .logo-container {
 
 #overview div img:hover {
     transform: scale(1.3);
+}
+
+/* Events Page */
+
+#events a div {
+    position: relative;
+    overflow: hidden;
+    height: 30vh;
+    margin-bottom: 5vh;
+}
+
+#events a div img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+}
+
+#events a:last-child div{
+    margin-bottom: 0;
+}
+
+#events div p {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 32px;
+    font-weight: 700;
+    border: 5px solid var(--green);
+    color: var(--green);
+    padding: 10px;
+}
+
+#events div img:hover {
+    transform: scale(1.3);
+}
+
+/* Events Booking Pages */
+
+.presentation {
+    display: flex;
+    margin: 50px;
+}
+
+.presentation img {
+    min-width: 600px;
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    margin-right: 50px;
+}
+
+.presentation p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.booking h2 {
+    margin-left: 50px;
+}
+
+.booking table {
+    width: 760px;
+    margin: 30px 50px;
+    font-size: 20px;
+}
+
+.booking table td {
+    padding-bottom: 10px;
+}
+
+.events-quantity {
+    display: none;
+    flex-direction: row;
+
+}
+
+tr.active .events-quantity {
+    display: flex;
+}
+
+.booking table td input {
+    border: 1px solid #DDD;
+    padding: 5px;
+    height: 36px;
+    width: 36px;
+    font-size: 20px;
+}
+
+.booking table td input:hover,
+.booking table td input:focus {
+    box-shadow: 10px 10px 34px #DDD;
+}
+
+.booking table td input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.events-date-button {
+    color: #FFFFFF;
+    border: none;
+    height: 36px;
+    width: 90px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #136d15, #41980a 50%, #136d15) var(--x, 0)/200%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.events-date-button:hover {
+    --x: 100%;
+    color: #000;
+}
+
+.events-buy-button {
+    display: none;
+    color: #FFFFFF;
+    border: none;
+    height: 36px;
+    width: 72px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #136d15, #41980a 50%, #136d15) var(--x, 0)/200%;
+    transition: 0.3s;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+tr.active .events-buy-button {
+    display: block;
+}
+
+.events-buy-button:hover {
+    --x: 100%;
+    color: #000;
+}
+
+.number-input-button {
+    color: #FFFFFF;
+    border: none;
+    height: 16px;
+    width: 32px;
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #136d15, #41980a 50%, #136d15) var(--x, 0)/200%;
+    transition: 0.3s;
+    cursor: pointer;
+    margin: 0 2px 2px 4px;
+    line-height: 16px;
+}
+
+.button-minus {
+    font-size: 24px;
+    margin: 2px 2px 0 4px;
+}
+
+.number-input-button:hover {
+    --x: 100%;
+    color: #000;
+}
+
+.input-buttons-container {
+    display: flex;
+    flex-direction: column;
 }
