@@ -38,38 +38,26 @@ const dates_element = document.querySelector('.date-picker .dates');
 const mth_elements = document.querySelector('.date-picker .dates .month .mth');
 const next_mth_element = document.querySelector('.date-picker .dates .month .next-mth');
 const prev_mth_element = document.querySelector('.date-picker .dates .month .prev-mth');
-const days_element =document.querySelector('.date-picker .dates .days');
+const days_element = document.querySelector('.date-picker .dates .days');
 
-let date = new Date();
-let day = date.getDate();
-let month = date.getMonth();
-let year = date.getFullYear();
+let currentDate = new Date();
+let currentDay = currentDate.getDate();
+let currentMonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
 
-let selectedDate = date;
-let selectedDay = day;
-let selectedMonth = month;
-let selectedYear = year;
+let selectedDate = currentDate;
+let selectedDay = currentDay;
+let selectedMonth = currentMonth;
+let selectedYear = currentYear;
 
-const months = [
-    {name: 'Januar', days: 31}, 
-    {name: 'Februar', days: isLeapYear(selectedYear) ? 29 : 28},
-    {name: 'März', days: 31},
-    {name: 'April', days: 30},
-    {name: 'Mai', days: 31},
-    {name: 'Juni', days: 30},
-    {name: 'Juli', days: 31},
-    {name: 'August', days: 31},
-    {name: 'September', days: 30},
-    {name: 'Oktober', days: 31},
-    {name: 'November', days: 30},
-    {name: 'Dezember', days: 31}
-];
+let displayedMonth = currentMonth;
+let displayedYear = currentYear;
 
+const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
+mth_elements.textContent = months[displayedMonth] + ' ' + displayedYear;
 
-mth_elements.textContent = months[month].name + ' ' + year;
-
-selected_date_element.textContent = formatDate(date);
+selected_date_element.textContent = formatDate(selectedDate);
 
 populateDates();
 
@@ -88,44 +76,49 @@ function ToggleDatePicker (e) {
 }
 
 function goToNextMonth (e) {
-    month ++;
-    if (month > 11) {
-        month = 0;
-        year++;
+    displayedMonth ++;
+    if (displayedMonth > 11) {
+        displayedMonth = 0;
+        displayedYear++;
     }
-    mth_elements.textContent = months[month].name + ' ' + year;
+    mth_elements.textContent = months[displayedMonth] + ' ' + displayedYear;
     populateDates();
 }
 
 function goToPrevMonth (e) {
-    month --;
-    if (month < 0) {
-        month = 11;
-        year--;
+    displayedMonth --;
+    if (displayedMonth < 0) {
+        displayedMonth = 11;
+        displayedYear--;
     }
-    mth_elements.textContent = months[month].name + ' ' + year;
+    mth_elements.textContent = months[displayedMonth] + ' ' + displayedYear;
     populateDates();
 }
 
 function populateDates (e) {
     days_element.innerHTML = '';
-    console.log(selectedMonth)
-    let amount_days = months[month].days;
-    console.log(amount_days)
-    for (let i = 0; i < amount_days; i++) {
+
+    for (let i = firstDayIndex(); i > 0; i--) {
+        const day_element = document.createElement('div');
+        day_element.classList.add('day', 'prev-date');
+        day_element.textContent = prevLastDay() - i;
+        days_element.appendChild(day_element);
+    }
+
+    for (let i = 0; i < lastDay(); i++) {
         const day_element = document.createElement('div');
         day_element.classList.add('day');
         day_element.textContent = i + 1;
 
-        if(selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+        if (selectedDay == (i + 1) && selectedYear == displayedYear && selectedMonth == displayedMonth) {
             day_element.classList.add('selected');
         }
 
-        day_element.addEventListener('click', function () {
-            selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
+        day_element.addEventListener('click', function (e) {
+            selectedDate = new Date(displayedYear + '-' + (displayedMonth + 1) + '-' + (i + 1));
             selectedDay = (i + 1);
-            selectedMonth = month;
-            selectedYear = year;
+            selectedMonth = displayedMonth;
+            selectedYear = displayedYear;
 
             selected_date_element.textContent = formatDate(selectedDate);
             selected_date_element.dataset.value = selectedDate;
@@ -133,6 +126,13 @@ function populateDates (e) {
             populateDates();
         })
 
+        days_element.appendChild(day_element);
+    }
+
+    for (let i = 1; i <= nextDays(); i++){
+        const day_element = document.createElement('div');
+        day_element.classList.add('day', 'next-date');
+        day_element.textContent = i;
         days_element.appendChild(day_element);
     }
 }
@@ -164,10 +164,22 @@ function formatDate(d) {
     return day + '.' + month + '.' + year;
 }
 
-function isLeapYear(y) {
-    if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0) {
-        return true;
-    }
+function lastDay() {
+    return new Date(displayedYear, displayedMonth + 1, 0).getDate();
+}
 
-    return false;
+function prevLastDay() {
+    return new Date(displayedYear, displayedMonth, 0).getDate();
+}
+
+function firstDayIndex() {
+    return new Date(displayedYear, displayedMonth, 1).getDay();
+}
+
+function lastDayIndex() {
+    return new Date(displayedYear, displayedMonth + 1, 0).getDay();
+}
+
+function nextDays() {
+    return 7 - lastDayIndex() - 1;
 }

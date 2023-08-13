@@ -332,8 +332,7 @@ tr.active .events-buy-button {
 
 .date-picker {
     position: relative;
-    width: 100%;
-    max-width: 320px;
+    width: 14rem;
     height: 60px;
     background-color: #FFF;
     margin: 30px auto;
@@ -398,18 +397,35 @@ tr.active .events-buy-button {
     background-color: #138510;
 }
 
+.date-picker .dates .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.date-picker .dates .weekdays .weekday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+}
+
 .date-picker .dates .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    height: 200px;
 }
 
 .date-picker .dates .days .day {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 2rem;
 }
 
 .date-picker .dates .days .day.selected {
     background-color: #138510;
+}
+
+.prev-date,
+.next-date {
+    opacity: 0.5;
 }
